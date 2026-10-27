@@ -23,6 +23,54 @@ Test the template on any machine first (about two seconds; leaves nothing behind
 bash tests/test_template.sh
 ```
 
+## Starting a new project
+
+The template clone is only the tool that makes new projects. Each project gets its own git repository: `new_investigation.sh` runs `git init` inside the new `repo/` folder, so the project's history is separate from the template's. All that's left is to give it a GitHub remote.
+
+### Once per machine
+
+Clone the template somewhere outside your project folders and leave it there:
+
+```bash
+mkdir -p ~/tools && cd ~/tools
+git clone git@github.com:<github_user>/bioinformatics_investigation_template.git
+```
+
+Set a git identity, or the first commit is skipped (the files are left staged):
+
+```bash
+git config --global user.name  "<github_user>"
+git config --global user.email "<id>+<github_user>@users.noreply.github.com"
+```
+
+### For each new project
+
+```bash
+# 1. create the investigation (the first commit happens here)
+~/tools/bioinformatics_investigation_template/new_investigation.sh \
+    --root /home/projects/<group> <project_name>
+
+# 2. give it its own private GitHub repository and push
+cd /home/projects/<group>/<project_name>/repo
+gh repo create <project_name> --private --source . --remote origin --push
+```
+
+Without `gh`, create an empty private repository called `<project_name>` on github.com (no README, licence or .gitignore), then:
+
+```bash
+git remote add origin git@github.com:<github_user>/<project_name>.git
+git push -u origin main
+```
+
+From then on, the session protocol's `git pull`, `git commit` and `git push` work against that project's repository.
+
+### Points to know
+
+- **Only `repo/` goes to GitHub.** `data/`, `work/`, `results/` and `scratch/` sit beside it, outside git, so large data is never pushed. Back them up by the server's own means.
+- **Projects are copies, not links.** Later improvements to the template don't reach existing projects. Pull the template (`git -C ~/tools/bioinformatics_investigation_template pull`) before creating a new project. To bring an updated tool into an existing project, copy the file across, commit it, and record the change in that project's decision log.
+- **`config/paths.tsv` holds this machine's absolute paths.** That is harmless in a private repository. For a clone on another machine, use `INVESTIGATION_PATHS` (see `repo_skeleton/config/readme.md`).
+- **Don't use GitHub's "template repository" button.** It copies the files without the setup script's name substitution, data folders or `paths.tsv`.
+
 ## What gets created
 
 ```
