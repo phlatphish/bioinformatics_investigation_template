@@ -4,8 +4,8 @@ Each question is tied to a module. "Blocks" names the claim or work it holds up.
 
 ## Open
 
-### Q-001 <question>
-- Module: mNN. Blocks: <what>.
-- Options: <list>.
+### Q-001 TODO(customize): first open question, or delete this entry
+- Module: mNN. Blocks: what it holds up.
+- Options: the choices under consideration.
 
 ## Closed

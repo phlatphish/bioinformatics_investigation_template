@@ -19,6 +19,9 @@ for d in data/raw data/external work results scratch repo/docs/state repo/tools;
 check "no placeholders left" bash -c "! grep -rl '__NAME__\|__ROOT__\|__DATE__' '$repo' --exclude-dir=.git"
 check "paths.tsv work key" grep -q "^work	$inv/work$" "$repo/config/paths.tsv"
 check "first commit made" git -C "$repo" rev-parse HEAD
+check "exactly five customize tags" bash -c "[ \$(grep -rn --exclude-dir=.git 'TODO(customize)' '$repo' | wc -l) -eq 5 ]"
+check "setup script lists the tags" bash -c "'$here/new_investigation.sh' --root '$tmp' demo_three 2>&1 | grep -c 'TODO(customize)' | grep -qx 6"
+check "tags in the five expected files" bash -c "[ \"\$(cd '$repo' && grep -rl --exclude-dir=.git 'TODO(customize)' . | sort | tr '\n' ' ')\" = './00_start_here.md ./docs/reference/analysis_guardrails.md ./docs/state/current_status.md ./docs/state/open_questions.md ' ]"
 
 cd "$repo"
 check "new module" tools/new_module.sh m01_qc

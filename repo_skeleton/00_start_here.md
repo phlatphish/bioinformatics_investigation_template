@@ -1,6 +1,6 @@
 # Start here
 
-__NAME__: <one sentence on the investigation and its intended outcome, e.g. a publication>.
+__NAME__: TODO(customize): one sentence on the investigation and its intended outcome, e.g. a publication.
 Investigation root: `__ROOT__/__NAME__`. Created __DATE__ from the bioinformatics investigation template.
 
 ## Read at the start of every session, in this order
@@ -47,7 +47,7 @@ Then follow `docs/reference/session_protocol.md` for opening, working and closin
 ## Working conventions
 
 - One approved module and one approved phase at a time. Ask at every approval gate.
-- <Language conventions, e.g. Perl for pipelines, R for statistics and figures, Python for specialized libraries.>
+- TODO(customize): language conventions, e.g. Perl for pipelines, R for statistics and figures, Python for specialized libraries.
 - File names in lowercase with underscores.
 - Log diagnostics; don't discard them.
 - Report early when work takes longer or costs more than expected.

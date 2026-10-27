@@ -9,7 +9,7 @@ It records decisions, claims and provenance. It does not run analyses; use it al
 ```bash
 ./new_investigation.sh --root /home/projects/redgillite cjb_rnaseq_heat
 cd /home/projects/redgillite/cjb_rnaseq_heat/repo
-# edit 00_start_here.md and docs/reference/analysis_guardrails.md section 8
+grep -rn 'TODO(customize)' . --exclude-dir=.git   # five fill-ins; see 'Customize a new project'
 tools/new_module.sh m01_qc                       # contract.md + handoff.md
 run=$(tools/new_run.sh m01_qc fastqc_all)        # immutable run dir with provenance
 $EDITOR "$run/cmd.sh"; (cd "$run" && bash cmd.sh)
@@ -63,6 +63,24 @@ git push -u origin main
 ```
 
 From then on, the session protocol's `git pull`, `git commit` and `git push` work against that project's repository.
+
+### Customize a new project
+
+A new project has five fill-ins, each tagged `TODO(customize):`. The setup script lists them when it finishes; to see what is left at any time:
+
+```bash
+grep -rn 'TODO(customize)' . --exclude-dir=.git
+```
+
+| File | What to fill in |
+|---|---|
+| `00_start_here.md`, line 3 | One sentence on the investigation and its intended outcome |
+| `00_start_here.md`, "Working conventions" | Language conventions |
+| `docs/reference/analysis_guardrails.md`, section 8 | Traps specific to this field and question, replacing the examples |
+| `docs/state/current_status.md` | The first module's row, e.g. `m01_qc` |
+| `docs/state/open_questions.md` | The first open question, or delete the Q-001 entry |
+
+Remove each tag as you fill it in, then commit. Everything else starts out valid and grows as the work proceeds (glossary, known pitfalls, decision log, dead ends, session index). `<...>` elsewhere is path or command syntax, such as `work/<module>/<run_id>/`, not a fill-in.
 
 ### Points to know
 

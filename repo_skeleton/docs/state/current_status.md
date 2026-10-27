@@ -6,7 +6,7 @@ As of __DATE__. Edited in place; git keeps the history. Numbers here cite verifi
 
 | Module | Status | Established | Next |
 |---|---|---|---|
-| m01_<name> | not started | — | Draft the contract |
+| TODO(customize): first module, e.g. m01_qc | not started | — | Draft the contract |
 
 ## What can be claimed now
 

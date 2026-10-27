@@ -79,4 +79,8 @@ fi
 ( perl tools/check_claims.pl >/dev/null 2>&1 && prove -Q tools/test_check_claims.t >/dev/null 2>&1 ) \
     && echo "record tools: checks pass" || echo "warning: record tool checks failed; run prove -v tools/test_check_claims.t" >&2
 echo "created $inv"
-echo "next: edit repo/00_start_here.md, then tools/new_module.sh m01_<name>"
+echo
+echo "customize these before the first module (README, 'Customize a new project'):"
+( cd "$inv/repo" && grep -rn --exclude-dir=.git 'TODO(customize)' . | sed 's|^\./|  |' | cut -c1-110 )
+echo "check what is left with: grep -rn 'TODO(customize)' $inv/repo --exclude-dir=.git"
+echo "then: tools/new_module.sh m01_<name>"

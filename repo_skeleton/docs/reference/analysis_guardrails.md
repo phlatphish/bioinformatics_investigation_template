@@ -84,9 +84,9 @@ One page before any code, in `docs/modules/mNN_<name>/contract.md` (copy `docs/r
 
 ## 8. Field-specific rules
 
-Replace these examples with the traps specific to this investigation, each with its reason and source. Add to this section as new traps are found.
+TODO(customize): replace the examples below with the traps specific to this investigation, each with its reason and source. Add to this section as new traps are found.
 
-- <e.g. RNA-seq: batch must not be confounded with condition; check the design matrix before fitting.>
-- <e.g. GWAS: correct for population structure; report the genomic inflation factor.>
-- <e.g. Metagenomics: screen for contamination and reference bias before abundance claims.>
-- <e.g. Comparative genomics: verify the identity of every downloaded proteome before orthology.>
+- Example, RNA-seq: batch must not be confounded with condition; check the design matrix before fitting.
+- Example, GWAS: correct for population structure; report the genomic inflation factor.
+- Example, metagenomics: screen for contamination and reference bias before abundance claims.
+- Example, comparative genomics: verify the identity of every downloaded proteome before orthology.
